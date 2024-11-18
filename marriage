@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(45deg, #833AB4, #FD1D1D, #FDCB82); /* Instagram Gradient */
+            color: white;
+            overflow-y: scroll;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100vh;
+            padding: 0 20px;
+            position: relative;
+            animation: fadeIn 2s ease-in-out;
+            flex-direction: column;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Fireworks Animation */
+        .fireworks {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://cdn.pixabay.com/photo/2018/12/31/22/26/fireworks-3906177_960_720.jpg') no-repeat center center fixed;
+            background-size: cover;
+            animation: fireworksAnimation 5s linear infinite;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        @keyframes fireworksAnimation {
+            0% { opacity: 0.2; }
+            50% { opacity: 0.6; }
+            100% { opacity: 0.2; }
+        }
+
+        /* App Layout Header */
+        .app-header {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Transparent Header */
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .amazon-design {
+            font-size: 36px;
+            color: #FDCB82; /* Instagram Yellow for accent */
+        }
+
+        /* Main container */
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            width: 100%;
+            max-width: 600px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(5px);
+            border: 5px solid #833AB4; /* Instagram Purple border */
+            color: white;
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #FDCB82; /* Instagram Yellow color */
+            margin-bottom: 20px;
+        }
+
+        .content {
+            margin: 20px 0;
+        }
+
+        .names {
+            font-family: 'Dancing Script', cursive;
+            font-size: 40px;
+            font-weight: 700;
+            color: #FD1D1D; /* Instagram Red color */
+            margin-bottom: 10px;
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            animation: writing 4s steps(40) 1s forwards;
+        }
+
+        .heart {
+            font-size: 30px;
+            color: #FD1D1D;
+            margin: 0 10px;
+            animation: beat 1s infinite;
+        }
+
+        .dates {
+            font-size: 18px;
+            color: #FDCB82; /* Instagram Yellow color */
+            margin-bottom: 20px;
+        }
+
+        /* Add borders for venue and address */
+        .venue-address {
+            border: 2px solid #FDCB82;
+            padding: 10px;
+            margin: 20px 0;
+        }
+
+        /* Separate borders for remaining time */
+        .countdown {
+            border: 2px solid #FDCB82;
+            padding: 10px;
+            margin: 20px 0;
+        }
+
+        /* Buttons */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            background: #833AB4; /* Instagram Purple for buttons */
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 14px;
+            text-transform: uppercase;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #5e259e; /* Darker purple on hover */
+            transform: scale(1.05);
+        }
+
+        .footer {
+            margin-top: 30px;
+            color: #FDCB82; /* Instagram Yellow color */
+            font-size: 16px;
+            font-weight: 300;
+        }
+
+        /* Event Details */
+        .event-details {
+            margin-top: 20px;
+            display: none;
+            font-size: 18px;
+            color: #FDCB82;
+            text-align: center;
+        }
+
+        iframe {
+            border: 0;
+            width: 100%;
+            height: 450px;
+            border-radius: 15px;
+        }
+
+        /* Heart Beating Animation */
+        @keyframes beat {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Writing effect animation */
+        @keyframes writing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        /* Header design with elements on both sides */
+        .decorative-header {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            font-size: 36px;
+            color: #FD1D1D; /* Instagram Red color */
+            font-weight: bold;
+        }
+
+        .decorative-header::before,
+        .decorative-header::after {
+            content: '✨';
+            font-size: 30px;
+            margin: 0 20px;
+            animation: sparkle 1.5s infinite alternate;
+        }
+
+        @keyframes sparkle {
+            0% { transform: scale(1); opacity: 0.6; }
+            100% { transform: scale(1.5); opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .names {
+                font-size: 20px;
+            }
+            .heart {
+                font-size: 25px;
+            }
+            .btn {
+                font-size: 12px;
+                padding: 6px 18px;
+            }
+            .container {
+                padding: 20px;
+                margin-top: 20px;
+            }
+            .header {
+                font-size: 24px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="fireworks"></div>
+
+    <!-- App Layout Header with decorative elements -->
+    <div class="app-header">
+        <div class="decorative-header">
+            <!-- Removed Wedding Reception text and stars -->
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <p>You're Invited!</p>
+        </div>
+        <div class="content">
+            <p>Join us to celebrate our wedding reception of</p>
+            <div class="names" style="animation-delay: 0s;">
+                <p>John</p>
+            </div>
+            <div class="heart">
+                <p>❤</p>
+            </div>
+            <div class="names" style="animation-delay: 0s;">
+                <p>Emma</p>
+            </div>
+            <div class="dates venue-address">
+                <p>Venue: <span style="color: red;">S.N.K. Mahal</span>, India</p>
+                <p>Date: Dec 4, 2024</p>
+                <p>Time: 6:00 PM IST - 10:00 PM IST</p>
+            </div>
+            <div class="countdown">
+                <p>Time remaining:</p>
+                <p id="daysRemaining"></p>
+            </div>
+
+            <!-- Buttons -->
+            <div class="button-container">
+                <button class="btn" onclick="toggleEventDetails()">Click here for Location</button>
+                <a class="btn" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Muthu+and+Harsha's+Wedding&dates=20241204T123000Z/20241204T163000Z&details=Join+us+for+a+wedding+celebration+on+Dec+4th&location=S.N.K.+Mahal,+Chennai&sf=true&output=xml" target="_blank">Add to Calendar</a>
+            </div>
+        </div>
+
+        <!-- Event Details (Map & RSVP) -->
+        <div class="event-details" id="eventDetails">
+            <p>Event Schedule:</p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3915.147384330476!2d77.16953787355689!3d11.10239145309966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8ffc82564988d%3A0x4676ff2ecb0ddeb7!2sS%20N%20K%20Mahal!5e0!3m2!1sen!2sin!4v1731679881289!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <div class="footer">
+            <p>We look forward to celebrating with you!</p>
+        </div>
+    </div>
+
+    <script>
+        // Countdown Timer
+        const weddingDate = new Date("Dec 4, 2024 18:00:00 GMT+0530").getTime();
+
+        const countdownElement = document.getElementById("daysRemaining");
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            countdownElement.innerHTML = `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+
+            if (distance < 0) {
+                clearInterval(timer);
+                countdownElement.innerHTML = "The event has started!";
+            }
+        }
+
+        // Update countdown every second
+        const timer = setInterval(updateCountdown, 1000);
+
+        function toggleEventDetails() {
+            const eventDetails = document.getElementById("eventDetails");
+            eventDetails.style.display = (eventDetails.style.display === "block") ? "none" : "block";
+        }
+    </script>
+</body>
+</html>
